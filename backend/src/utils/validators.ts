@@ -12,7 +12,7 @@ export const validate = (validations: ValidationChain[]) => {
         }
         const errors = validationResult(req);
         if (errors.isEmpty()) return next()
-        
+
         return res.status(422).json({ errors: errors.array() })
     }
 }
@@ -26,3 +26,6 @@ export const signupValidator = [
     ...loginValidator
 ]
 
+export const chatCompletionValidator = [
+    body("message").trim().notEmpty().withMessage("Message is required")
+]

@@ -59,15 +59,46 @@ export const userLogin = async (req: Request, res: Response): Promise<Record<str
 }
 
 export const verifyUser = async (req:Request,res:Response):Promise<Record<string, any>> => {
-    console.log("id",res.locals.jwtData)
-    const user = await User.findById(res.locals.jwtData?.id);
-    if(!user){
-        console.log("User not found");
-        return res.status(401).json({message:"Error",data:"Un-authorised"})
+    try {
+        console.log("id",res.locals.jwtData)
+        const user = await User.findById(res.locals.jwtData?.id);
+        if(!user){
+            console.log("User not found");
+            return res.status(401).json({message:"Error",data:"Un-authorised"})
+        }
+        if(user?._id?.toString() !== res?.locals?.jwtData?.id?.toString()){
+            console.log("User not match");
+            return res.status(401).json({message:"Error",data:"Un-authorised"})
+        }
+        return res.status(200).json({message:"OK",data:user})
+    } catch (error) {
+        return res.status(400).json({ message: "Error", error: error.message })
     }
-    if(user?._id?.toString() !== res?.locals?.jwtData?.id?.toString()){
-        console.log("User not match");
-        return res.status(401).json({message:"Error",data:"Un-authorised"})
+   
+}
+
+export const logoutUser = async (req:Request,res:Response):Promise<Record<string, any>> => {
+    try {
+        console.log("id",res.locals.jwtData)
+        const user = await User.findById(res.locals.jwtData?.id);
+        if(!user){
+            console.log("User not found");
+            return res.status(401).json({message:"Error",data:"Un-authorised"})
+        }
+        if(user?._id?.toString() !== res?.locals?.jwtData?.id?.toString()){
+            console.log("User not match");
+            return res.status(401).json({message:"Error",data:"Un-authorised"})
+        }
+        // res.cookie(COOKIE_NAME,"");
+        res.clearCookie(COOKIE_NAME,{
+            httpOnly:true,
+            domain:"localhost",
+            signed:true,
+            path:"/"
+        })
+        return res.status(200).json({message:"OK"})
+    } catch (error) {
+        return res.status(400).json({ message: "Error", error: error.message })
     }
-    return res.status(200).json({message:"OK",data:user})
+   
 }

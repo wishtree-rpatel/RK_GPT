@@ -1,15 +1,17 @@
 import { Box, Button, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import LoginIcon from "@mui/icons-material/Login";
 import { toast } from "react-hot-toast";
 import CustomizedInput from "../components/shared/CustomizedInput";
 import { userAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 // import robotPng from ""
 
 const Login = () => {
 
   //Accessing provider
   const auth = userAuth();
+  const navigate = useNavigate();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -29,6 +31,11 @@ const Login = () => {
       toast.error("Signing In Failed", { id: "login" });
     }
   };
+  useEffect(()=>{
+    if(auth?.user){
+      return navigate("/chat")
+    }
+  },[auth])
   return (
     <div style={{ display: "flex", width: "100%", height: "100%", flex: "1" }}>
       <Box padding={8} mt={8} display={{ md: "flex", sm: "none", xs: "none" }}>
