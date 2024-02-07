@@ -5,7 +5,13 @@ import {
   useEffect,
   useState,
 } from "react";
-import { checkAuthStatus, loginUser } from "../helpers/api-communicator";
+import {
+  checkAuthStatus,
+  loginUser,
+  logoutUser,
+  signUpUser,
+} from "../helpers/api-communicator";
+import toast from "react-hot-toast";
 
 type User = {
   name: string;
@@ -34,8 +40,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
     }
     checkStatus();
-  },[]);
-// We've login method here so that we don't have to add setState methods like setIsLoggedIn and setUser in provider
+  }, []);
+
+  // We've login method here so that we don't have to add setState methods like setIsLoggedIn and setUser in provider
   const login = async (email: string, password: string) => {
     const { data } = await loginUser(email, password);
     if (data) {
@@ -44,8 +51,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser({ name: data?.name, email: data?.email });
     }
   };
-  const signup = async (name: string, email: string, password: string) => {};
-  const logout = async () => {};
+  const signup = async (name: string, email: string, password: string) => {
+     await signUpUser(name, email, password);
+  };
+  const logout = async () => {
+    try {
+      await logoutUser();
+      setIsLoggedIn(false);
+      setUser(null);
+    } catch (error) {
+      console.log("error", error);
+      toast.error("Something went wrong");
+    }
+  };
 
   const value = {
     user,
