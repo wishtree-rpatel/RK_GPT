@@ -36,18 +36,18 @@ export const userSignup = async (
     // create token and store cookie
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "rk-gpt-turbo.onrender.com",
+      // domain: "rk-gpt-turbo.onrender.com",
       signed: true,
       secure:true,
-      path: "/",
+      // path: "/",
     });
 
     const token = createToken(user._id.toString(), user.email, "7d");
     const expires = new Date();
     expires.setDate(expires.getDate() + 7);
     res.cookie(COOKIE_NAME, token, {
-      path: "/",
-      domain: "rk-gpt-turbo.onrender.com",
+      // path: "/",
+      // domain: "rk-gpt-turbo.onrender.com",
       expires,
       httpOnly: true,
       secure:true,
@@ -84,18 +84,18 @@ export const userLogin = async (
 
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "rk-gpt-turbo.onrender.com",
+      // domain: "rk-gpt-turbo.onrender.com",
       signed: true,
       secure:true,
-      path: "/",
+      // path: "/",
     });
 
     const token = createToken(user._id.toString(), user.email, "7d");
     const expires = new Date();
     expires.setDate(expires.getDate() + 7);
     res.cookie(COOKIE_NAME, token, {
-      path: "/",
-      domain: "rk-gpt-turbo.onrender.com",
+      // path: "/",
+      // domain: "rk-gpt-turbo.onrender.com",
       expires,
       httpOnly: true,
       secure:true,
@@ -151,10 +151,10 @@ export const userLogout = async (
 
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
-      domain: "rk-gpt-turbo.onrender.com",
+      // domain: "rk-gpt-turbo.onrender.com",
       signed: true,
       secure:true,
-      path: "/",
+      // path: "/",
     });
 
     return res
