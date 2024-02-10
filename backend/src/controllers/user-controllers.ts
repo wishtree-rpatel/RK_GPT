@@ -37,7 +37,7 @@ export const userSignup = async (
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
       // domain: "rk-gpt-turbo.onrender.com",
-      signed: true,
+      // signed: true,
       secure:true,
       // path: "/",
     });
@@ -51,7 +51,7 @@ export const userSignup = async (
       expires,
       httpOnly: true,
       secure:true,
-      signed: true,
+      // signed: true,
     });
 
     return res
@@ -85,7 +85,7 @@ export const userLogin = async (
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
       // domain: "rk-gpt-turbo.onrender.com",
-      signed: true,
+      // signed: true,
       secure:true,
       // path: "/",
     });
@@ -98,7 +98,7 @@ export const userLogin = async (
       // domain: "rk-gpt-turbo.onrender.com",
       expires,
       httpOnly: true,
-      secure:true,
+      // secure:true,
       signed: true,
     });
 
@@ -152,7 +152,7 @@ export const userLogout = async (
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
       // domain: "rk-gpt-turbo.onrender.com",
-      signed: true,
+      // signed: true,
       secure:true,
       // path: "/",
     });
