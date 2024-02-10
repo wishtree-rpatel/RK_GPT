@@ -11,7 +11,7 @@ import {disableReactDevTools} from "@fvilers/disable-react-devtools"
 
 
 
-axios.defaults.baseURL = "http://localhost:5000/api/v1";
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 axios.defaults.withCredentials = true;
 const theme = createTheme({
   typography: {
