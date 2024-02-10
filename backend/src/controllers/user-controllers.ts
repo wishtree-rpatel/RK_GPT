@@ -38,6 +38,7 @@ export const userSignup = async (
       httpOnly: true,
       domain: "rk-gpt-turbo.onrender.com",
       signed: true,
+      secure:true,
       path: "/",
     });
 
@@ -49,6 +50,7 @@ export const userSignup = async (
       domain: "rk-gpt-turbo.onrender.com",
       expires,
       httpOnly: true,
+      secure:true,
       signed: true,
     });
 
@@ -84,6 +86,7 @@ export const userLogin = async (
       httpOnly: true,
       domain: "rk-gpt-turbo.onrender.com",
       signed: true,
+      secure:true,
       path: "/",
     });
 
@@ -95,6 +98,7 @@ export const userLogin = async (
       domain: "rk-gpt-turbo.onrender.com",
       expires,
       httpOnly: true,
+      secure:true,
       signed: true,
     });
 
@@ -149,6 +153,7 @@ export const userLogout = async (
       httpOnly: true,
       domain: "rk-gpt-turbo.onrender.com",
       signed: true,
+      secure:true,
       path: "/",
     });
 
