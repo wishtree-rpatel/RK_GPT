@@ -1,12 +1,11 @@
+import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
-import { Routes, Route } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
+import Chat from "./pages/Chat.tsx";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Chat from "./pages/Chat.tsx";
 import NotFound from "./pages/NotFound";
-import { useAuth } from "./context/AuthContext";
-import Footer from "./components/footer/Footer";
+import Signup from "./pages/Signup";
 function App() {
   const auth = useAuth();
 

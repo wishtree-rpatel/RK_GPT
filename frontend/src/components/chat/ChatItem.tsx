@@ -1,8 +1,7 @@
-import React from "react";
-import { Box, Avatar, Typography } from "@mui/material";
-import { useAuth } from "../../context/AuthContext";
+import { Avatar, Box, Typography } from "@mui/material";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { useAuth } from "../../context/AuthContext";
 
 function extractCodeFromString(message: string) {
   if (message.includes("```")) {
