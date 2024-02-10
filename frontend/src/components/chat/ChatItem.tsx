@@ -26,13 +26,13 @@ function isCodeBlock(str: string) {
   }
   return false;
 }
-const ChatItem = ({
+function ChatItem({
   content,
   role,
 }: {
   content: string;
   role: "user" | "assistant";
-}) => {
+}) {
   const messageBlocks = extractCodeFromString(content);
   const auth = useAuth();
   return role == "assistant" ? (
@@ -57,7 +57,7 @@ const ChatItem = ({
           messageBlocks.length &&
           messageBlocks.map((block) =>
             isCodeBlock(block) ? (
-              <SyntaxHighlighter style={coldarkDark} language="javascript">
+              <SyntaxHighlighter style={coldarkDark} language="unknown">
                 {block}
               </SyntaxHighlighter>
             ) : (
@@ -77,8 +77,8 @@ const ChatItem = ({
       }}
     >
       <Avatar sx={{ ml: "0", bgcolor: "black", color: "white" }}>
-        {auth?.user?.name[0]}
-        {auth?.user?.name.split(" ")[1][0]}
+        {auth?.user?.name?.[0]?.toUpperCase()}
+        {auth?.user?.name.split(" ")?.[1]?.[0]?.toUpperCase()}
       </Avatar>
       <Box>
         {!messageBlocks && (
@@ -98,6 +98,6 @@ const ChatItem = ({
       </Box>
     </Box>
   );
-};
+}
 
 export default ChatItem;

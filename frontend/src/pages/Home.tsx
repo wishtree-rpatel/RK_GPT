@@ -59,7 +59,6 @@ const Home = () => {
           />
         </Box>
       </Box>
-      <Footer />
     </Box>
   );
 };

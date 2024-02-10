@@ -7,6 +7,10 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import { Toaster } from "react-hot-toast";
 import axios from "axios";
+import {disableReactDevTools} from "@fvilers/disable-react-devtools"
+
+
+
 axios.defaults.baseURL = "http://localhost:5000/api/v1";
 axios.defaults.withCredentials = true;
 const theme = createTheme({
@@ -15,6 +19,8 @@ const theme = createTheme({
     allVariants: { color: "white" },
   },
 });
+console.log("environment",import.meta.env.MODE)
+if(import.meta.env.PROD) disableReactDevTools()
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>

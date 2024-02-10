@@ -15,7 +15,7 @@ type Message = {
   role: "user" | "assistant";
   content: string;
 };
-const Chat = () => {
+function Chat() {
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const auth = useAuth();
@@ -99,8 +99,8 @@ const Chat = () => {
               fontWeight: 700,
             }}
           >
-            {auth?.user?.name[0]}
-            {auth?.user?.name.split(" ")[1][0]}
+            {auth?.user?.name?.[0]?.toUpperCase()}
+            {auth?.user?.name.split(" ")?.[1]?.[0]?.toUpperCase()}
           </Avatar>
           <Typography sx={{ mx: "auto", fontFamily: "work sans" }}>
             You are talking to a ChatBOT
@@ -196,6 +196,6 @@ const Chat = () => {
       </Box>
     </Box>
   );
-};
+}
 
 export default Chat;

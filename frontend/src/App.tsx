@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Chat from "./pages/Chat";
+import Chat from "./pages/Chat.tsx";
 import NotFound from "./pages/NotFound";
 import { useAuth } from "./context/AuthContext";
 import Footer from "./components/footer/Footer";
